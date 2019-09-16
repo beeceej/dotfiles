@@ -1,6 +1,7 @@
 (load "~/.emacs.d/custom/evil.el")
 (load "~/.emacs.d/custom/lang/elisp.el")
 (load "~/.emacs.d/custom/lang/go.el")
+(load "~/.emacs.d/custom/lang/terraform.el")
 
 (defun load-custom-config ()
   "Set up use package.
@@ -131,5 +132,6 @@ most everything else depends on it from here on out."
 (defun custom-config--lang ()
   "Load programming specific configuration"
   (load-custom-config/lang/elisp)
-  (load-custom-config/lang/go))
+  (load-custom-config/lang/go)
+  (load-custom-config/lang/terraform))
 
