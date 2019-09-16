@@ -46,6 +46,10 @@
       "wl" 'windmove-right
       "wh" 'windmove-left
       "wj" 'windmove-down
+      "wK" 'evil-window-move-very-top
+      "wL" 'evil-window-move-far-right
+      "wH" 'evil-window-move-far-left
+      "wJ" 'evil-window-move-very-bottom
       "pp" 'projectile-switch-project
       "pt" 'treemacs
       "pf" 'projectile-find-file
