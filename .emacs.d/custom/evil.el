@@ -53,6 +53,7 @@
       "pp" 'projectile-switch-project
       "pt" 'treemacs
       "pf" 'projectile-find-file
+      "pt" 'projectile-run-term
       "TAB" 'mode-line-other-buffer
       "be" 'eval-buffer
       "bd" 'kill-buffer)
