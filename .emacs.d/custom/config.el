@@ -43,6 +43,12 @@ most everything else depends on it from here on out."
   (menu-bar-mode -1)
   (toggle-scroll-bar -1)
   (tool-bar-mode -1)
+  (show-paren-mode 1)
+
+  (use-package rainbow-delimiters
+    :ensure t
+    :config
+    (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
   (use-package flycheck
     :ensure t
