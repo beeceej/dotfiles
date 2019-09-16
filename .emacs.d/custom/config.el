@@ -79,6 +79,7 @@ most everything else depends on it from here on out."
     :ensure t
     :init
     (setq projectile-completion-system 'ivy)
+    (setq projectile-project-search-path '("~/Code"))
     :config
     (projectile-mode)
     (setq projectile-enable-caching t))
