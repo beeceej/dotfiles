@@ -64,8 +64,14 @@ most everything else depends on it from here on out."
     :ensure t
     :config
     (use-package evil-magit
-      :ensure t
-    ))
+      :ensure t)
+    (defun setup-commit ()
+      (let* ((curr-branch (magit-get-current-branch))
+	     (ticket-parts (split-string (nth 1 (split-string curr-branch "/")) "-"))
+	     (project-name (nth 0 ticket-parts))
+	     (ticket-num (nth 1 ticket-parts)))
+	(insert (concat "[" project-name "-" ticket-num "]"))))
+    (add-hook 'git-commit-setup-hook 'setup-commit))
 
   (use-package swiper :ensure t)
 
