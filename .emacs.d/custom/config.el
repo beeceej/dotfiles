@@ -1,6 +1,7 @@
 (load "~/.emacs.d/custom/evil.el")
 (load "~/.emacs.d/custom/lang/elisp.el")
 (load "~/.emacs.d/custom/lang/go.el")
+(load "~/.emacs.d/custom/lang/terraform.el")
 
 (defun load-custom-config ()
   "Set up use package.
@@ -43,6 +44,12 @@ most everything else depends on it from here on out."
   (menu-bar-mode -1)
   (toggle-scroll-bar -1)
   (tool-bar-mode -1)
+  (show-paren-mode 1)
+
+  (use-package rainbow-delimiters
+    :ensure t
+    :config
+    (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
   (use-package flycheck
     :ensure t
@@ -79,6 +86,7 @@ most everything else depends on it from here on out."
     :ensure t
     :init
     (setq projectile-completion-system 'ivy)
+    (setq projectile-project-search-path '("~/Code"))
     :config
     (projectile-mode)
     (setq projectile-enable-caching t))
@@ -124,5 +132,6 @@ most everything else depends on it from here on out."
 (defun custom-config--lang ()
   "Load programming specific configuration"
   (load-custom-config/lang/elisp)
-  (load-custom-config/lang/go))
+  (load-custom-config/lang/go)
+  (load-custom-config/lang/terraform))
 
