@@ -44,6 +44,11 @@ most everything else depends on it from here on out."
   (toggle-scroll-bar -1)
   (tool-bar-mode -1)
 
+  (use-package autopair
+    :ensure t
+    :config
+    (autopair-global-mode))
+
   (use-package flycheck
     :ensure t
     :init (global-flycheck-mode))
