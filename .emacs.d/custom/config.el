@@ -51,6 +51,11 @@ most everything else depends on it from here on out."
     :config
     (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
+  (use-package autopair
+    :ensure t
+    :config
+    (autopair-global-mode))
+
   (use-package flycheck
     :ensure t
     :init (global-flycheck-mode))
