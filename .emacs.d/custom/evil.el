@@ -55,6 +55,7 @@
       "pf" 'projectile-find-file
       "p$t" 'projectile-run-term
       "TAB" 'mode-line-other-buffer
+      "sgp" 'counsel-git-grep
       "be" 'eval-buffer
       "bd" 'kill-buffer)
     (evil-leader/set-key-for-mode 'go-mode "gg" 'godef-jump)
