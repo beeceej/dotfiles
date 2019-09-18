@@ -85,7 +85,11 @@ most everything else depends on it from here on out."
 	(insert (concat "[" project-name "-" ticket-num "]"))))
     (add-hook 'git-commit-setup-hook 'setup-commit))
 
-  (use-package swiper :ensure t)
+  (use-package swiper
+    :ensure t)
+  
+  (use-package counsel
+    :ensure t)
 
   (use-package projectile
     :ensure t
