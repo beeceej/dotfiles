@@ -53,8 +53,9 @@
       "pp" 'projectile-switch-project
       "pt" 'treemacs
       "pf" 'projectile-find-file
-      "pt" 'projectile-run-term
+      "p$t" 'projectile-run-term
       "TAB" 'mode-line-other-buffer
+      "sgp" 'counsel-git-grep
       "be" 'eval-buffer
       "bd" 'kill-buffer)
     (evil-leader/set-key-for-mode 'go-mode "gg" 'godef-jump)
