@@ -15,7 +15,9 @@
     (custom-config/evil--evil-leader)
     ;; comment code out based on visual mode selection
     (custom-config/evil--evil-commentary)
-    (evil-mode)))
+    (evil-mode)
+    (evil-define-key 'normal lisp-mode-map
+      (kbd "TAB") 'evil-indent)))
 
 (defun custom-config/evil--evil-mc ()
   (use-package evil-mc
