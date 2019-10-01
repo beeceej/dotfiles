@@ -1,11 +1,5 @@
 (load "~/.emacs.d/custom/evil.el")
-(load "~/.emacs.d/custom/lang/elisp.el")
-(load "~/.emacs.d/custom/lang/go.el")
-(load "~/.emacs.d/custom/lang/terraform.el")
-(load "~/.emacs.d/custom/lang/markdown.el")
-(load "~/.emacs.d/custom/lang/vue.el")
-(load "~/.emacs.d/custom/lang/js.el")
-(load "~/.emacs.d/custom/lang/ts.el")
+(load "~/.emacs.d/custom/lang/lang.el")
 
 (defun load-custom-config ()
   "Set up use package.
@@ -144,11 +138,5 @@ most everything else depends on it from here on out."
 
 (defun custom-config--lang ()
   "Load programming specific configuration"
-  (load-custom-config/lang/elisp)
-  (load-custom-config/lang/go)
-  (load-custom-config/lang/terraform)
-  (load-custom-config/lang/markdown)
-  (load-custom-config/lang/vue)
-  (load-custom-config/lang/js)
-  (load-custom-config/lang/ts))
+  (load-custom-config/lang))
 
