@@ -13,4 +13,13 @@
   (load-custom-config/lang/markdown)
   (load-custom-config/lang/vue)
   (load-custom-config/lang/js)
-  (load-custom-config/lang/ts))
+  (load-custom-config/lang/ts)
+  (load-custom-config/lang--tool-prettier))
+
+(defvar prettier-enabled-modes '(typescript-mode-hook vue-mode-hook))
+(defun load-custom-config/lang--tool-prettier ()
+  (use-package prettier-js
+    :ensure t
+    :config
+    (dolist (hook prettier-enabled-modes)
+      (add-hook hook 'prettier-js-mode))))
