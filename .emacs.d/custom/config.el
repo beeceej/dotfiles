@@ -130,7 +130,16 @@ most everything else depends on it from here on out."
     :init
     (with-eval-after-load 'company
       (add-to-list 'company-backends 'company-go)
-      (add-to-list 'company-backends 'company-elisp))))
+      (add-to-list 'company-backends 'company-elisp)))
+
+  (use-package slime-company
+    :ensure t
+    :defer t)
+
+  (use-package aggressive-indent
+    :ensure t
+    :config
+    (global-aggressive-indent-mode 1)))
 
 (defun custom-config--evil ()
   "load my evil configuration, this provides vim keys"
