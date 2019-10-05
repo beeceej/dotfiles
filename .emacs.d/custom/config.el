@@ -116,13 +116,14 @@ most everything else depends on it from here on out."
       (bind-key [remap completion-at-point] #'company-complete company-mode-map)
       (setq
        company-tooltip-align-annotations t
-       company-show-numbers t))
+       company-show-numbers t)
+      (add-to-list 'company-backends 'company-elisp))
     :diminish company-mode)
 
   (use-package company-quickhelp          ; Documentation popups for Company
-   :ensure t
-   :defer t
-   :init (add-hook 'global-company-mode-hook #'company-quickhelp-mode))
+    :ensure t
+    :defer t
+    :init (add-hook 'global-company-mode-hook #'company-quickhelp-mode))
 
   (use-package company-go
     :ensure t
@@ -130,11 +131,14 @@ most everything else depends on it from here on out."
     :init
     (with-eval-after-load 'company
       (add-to-list 'company-backends 'company-go)
-      (add-to-list 'company-backends 'company-elisp)))
+      ))
 
   (use-package slime-company
     :ensure t
-    :defer t)
+    :defer t
+    :init
+    (with-eval-after-load 'company
+      (add-to-list 'company-backends 'company-slime)))
 
   (use-package aggressive-indent
     :ensure t
