@@ -5,9 +5,11 @@
 (load "~/.emacs.d/custom/lang/vue.el")
 (load "~/.emacs.d/custom/lang/js.el")
 (load "~/.emacs.d/custom/lang/ts.el")
+(load "~/.emacs.d/custom/lang/cl.el")
 
 (defun load-custom-config/lang ()
   (load-custom-config/lang/elisp)
+  (load-custom-config/lang/cl)
   (load-custom-config/lang/go)
   (load-custom-config/lang/terraform)
   (load-custom-config/lang/markdown)
