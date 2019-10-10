@@ -70,4 +70,8 @@
       "be" 'eval-buffer
       "bd" 'kill-buffer)
     (evil-leader/set-key-for-mode 'go-mode "gg" 'godef-jump)
+    (evil-leader/set-key-for-mode 'lisp-mode "ef" 'slime-eval-defun)
+    (evil-leader/set-key-for-mode 'lisp-mode "er" 'slime-eval-region)
+    (evil-leader/set-key-for-mode 'emacs-lisp-mode "ef" 'eval-defun)
+    (evil-leader/set-key-for-mode 'emacs-lisp-mode "er" 'eval-region)
     (global-evil-leader-mode)))

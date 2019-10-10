@@ -3,15 +3,21 @@
 (package-initialize)
 (load "~/.emacs.d/custom/config.el")
 
+
 ;; this is the entrypoint into my emacs config
 ;; most everything is configured via use-package
 (load-custom-config)
+
 (use-package exec-path-from-shell :ensure t)
 
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
-
 (setq shell-file-name "/bin/bash")
+
+(use-package eval-sexp-fu
+  :ensure t
+  :config
+  (eval-sexp-fu-flash-mode))
 
 ;; ==================================================
 ;; ===============End Custom Config==================
