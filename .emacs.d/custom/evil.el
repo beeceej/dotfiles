@@ -15,6 +15,8 @@
     (custom-config/evil--evil-leader)
     ;; comment code out based on visual mode selection
     (custom-config/evil--evil-commentary)
+    ;; quick vim style surrounding
+    (custom-config/evil--evil-surround)
     (evil-mode)
     (evil-define-key 'normal lisp-mode-map
       (kbd "TAB") 'evil-indent)))
@@ -24,6 +26,13 @@
     :ensure t
     :init
     :config (global-evil-mc-mode 1)))
+
+
+(defun custom-config/evil--evil-surround ()
+  (use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1)))
 
 (defun custom-config/evil--evil-commentary ()
   (use-package evil-commentary
