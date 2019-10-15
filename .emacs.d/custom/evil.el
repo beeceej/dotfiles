@@ -74,4 +74,5 @@
     (evil-leader/set-key-for-mode 'lisp-mode "er" 'slime-eval-region)
     (evil-leader/set-key-for-mode 'emacs-lisp-mode "ef" 'eval-defun)
     (evil-leader/set-key-for-mode 'emacs-lisp-mode "er" 'eval-region)
+    (evil-leader/set-key-for-mode 'graphviz-dot-mode "cp" 'graphviz-dot-preview)
     (global-evil-leader-mode)))
