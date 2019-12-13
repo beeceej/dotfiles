@@ -7,6 +7,7 @@
 (load "~/.emacs.d/custom/lang/ts.el")
 (load "~/.emacs.d/custom/lang/cl.el")
 (load "~/.emacs.d/custom/lang/python.el")
+(load "~/.emacs.d/custom/lang/docker.el")
 (load "~/.emacs.d/custom/lang/graphviz-dot.el")
 
 (defun load-custom-config/lang ()
@@ -20,7 +21,8 @@
   (load-custom-config/lang/ts)
   (load-custom-config/lang/graph-viz-dot)
   (load-custom-config/lang--tool-prettier)
-  (load-custom-config/lang/python))
+  (load-custom-config/lang/python)
+  (load-custom-config/lang/docker))
 
 (defvar prettier-enabled-modes '(typescript-mode-hook vue-mode-hook))
 (defun load-custom-config/lang--tool-prettier ()
