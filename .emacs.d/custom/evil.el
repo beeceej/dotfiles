@@ -27,7 +27,6 @@
     :init
     :config (global-evil-mc-mode 1)))
 
-
 (defun custom-config/evil--evil-surround ()
   (use-package evil-surround
   :ensure t
@@ -48,6 +47,7 @@
     (evil-leader/set-key
       "SPC" 'execute-extended-command
       "gs" 'magit
+      "glb" 'magit-log-buffer-file
       "ff" 'find-file
       "ss" 'swiper
       "ww" 'next-multiframe-window

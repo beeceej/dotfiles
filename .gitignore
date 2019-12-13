@@ -1,5 +1,7 @@
 .emacs.d/auto-save-list/**/**
 .emacs.d/elpa/**/**
 .emacs.d/*.cache
+.emacs.d/elpy
+.emacs.d/.last-package-update-day
 *eld
 *~
