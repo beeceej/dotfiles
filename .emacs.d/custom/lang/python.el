@@ -9,4 +9,9 @@
     (setq elpy-modules (remq 'elpy-module-highlight-indentation elpy-modules))
     (setq elpy-modules (remq 'elpy-module-flymake elpy-modules))
     (setq elpy-rpc-python-command python-shell-interpreter)
-    (elpy-enable)))
+    (elpy-enable))
+  (use-package python-black
+    :ensure t
+    :after python
+    :init
+    (add-hook 'python-mode-hook #'python-black-on-save-mode)))

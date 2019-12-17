@@ -11,7 +11,10 @@ most everything else depends on it from here on out."
   (custom-config--font)
   (custom-config--base)
   (custom-config--evil)
-  (custom-config--lang))
+  (custom-config--lang)
+  ;; delete trailing whitespace on save
+  (add-hook 'before-save-hook
+	    'delete-trailing-whitespace))
 
 (defun custom-config--use-package ()
   "Set up use-package, which is what we'll use to install most dependencies from here on out."
