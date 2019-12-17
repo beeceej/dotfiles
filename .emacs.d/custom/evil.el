@@ -69,7 +69,11 @@
       "sgp" 'counsel-git-grep
       "be" 'eval-buffer
       "bd" 'kill-buffer
-      "bl" 'electric-buffer-list)
+      "bl" 'electric-buffer-list
+      "drd" 'docker-rm-dangling
+      "dsa" 'docker-stop-all
+      "dra" 'docker-rm-all
+      )
     (evil-leader/set-key-for-mode 'go-mode "gg" 'godef-jump)
     (evil-leader/set-key-for-mode 'lisp-mode "ef" 'slime-eval-defun)
     (evil-leader/set-key-for-mode 'lisp-mode "er" 'slime-eval-region)
