@@ -63,6 +63,7 @@
       "wJ" 'evil-window-move-very-bottom
       "pp" 'projectile-switch-project
       "pt" 'treemacs
+      "pw" 'treemacs-switch-workspace
       "pf" 'projectile-find-file
       "p$t" 'projectile-run-term
       "TAB" 'mode-line-other-buffer
