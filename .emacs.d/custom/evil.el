@@ -46,30 +46,31 @@
     (evil-leader/set-leader "SPC")
     (evil-leader/set-key
       "SPC" 'execute-extended-command
-      "gs" 'magit
-      "glb" 'magit-log-buffer-file
+      "TAB" 'mode-line-other-buffer
+      "bd" 'kill-buffer
+      "be" 'eval-buffer
+      "bl" 'electric-buffer-list
       "ff" 'find-file
-      "ss" 'swiper
-      "ww" 'next-multiframe-window
-      "w-" 'split-window-vertically
-      "w/" 'split-window-horizontally
-      "wk" 'windmove-up
-      "wl" 'windmove-right
-      "wh" 'windmove-left
-      "wj" 'windmove-down
-      "wK" 'evil-window-move-very-top
-      "wL" 'evil-window-move-far-right
-      "wH" 'evil-window-move-far-left
-      "wJ" 'evil-window-move-very-bottom
+      "glb" 'magit-log-buffer-file
+      "gs" 'magit
+      "p$t" 'projectile-run-term
+      "pf" 'projectile-find-file
       "pp" 'projectile-switch-project
       "pt" 'treemacs
-      "pf" 'projectile-find-file
-      "p$t" 'projectile-run-term
-      "TAB" 'mode-line-other-buffer
       "sgp" 'counsel-git-grep
-      "be" 'eval-buffer
-      "bd" 'kill-buffer
-      "bl" 'electric-buffer-list)
+      "sl" 'sort-lines
+      "ss" 'swiper
+      "w-" 'split-window-vertically
+      "w/" 'split-window-horizontally
+      "wH" 'evil-window-move-far-left
+      "wJ" 'evil-window-move-very-bottom
+      "wK" 'evil-window-move-very-top
+      "wL" 'evil-window-move-far-right
+      "wh" 'windmove-left
+      "wj" 'windmove-down
+      "wk" 'windmove-up
+      "wl" 'windmove-right
+      "ww" 'next-multiframe-window)
     (evil-leader/set-key-for-mode 'go-mode "gg" 'godef-jump)
     (evil-leader/set-key-for-mode 'lisp-mode "ef" 'slime-eval-defun)
     (evil-leader/set-key-for-mode 'lisp-mode "er" 'slime-eval-region)
