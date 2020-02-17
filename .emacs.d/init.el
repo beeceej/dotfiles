@@ -17,6 +17,27 @@
   :ensure t
   :config
   (eval-sexp-fu-flash-mode))
+;; LSP
+
+(use-package yasnippet
+  :ensure t)
+(use-package lsp-mode
+  :ensure t
+  ;; :hook (elm-mode . lsp)
+  :commands lsp)
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode)
+(use-package lsp-haskell
+  :ensure t
+  :config
+  (setq lsp-haskell-process-path-hie "ghcide")
+  (setq lsp-haskell-process-args-hie '())
+  ;; Comment/uncomment this line to see interactions between lsp client/server.
+  ;;(setq lsp-log-io t)
+  )
+
+(setq lsp-print-io t)
 
 ;; ==================================================
 ;; ===============End Custom Config==================
@@ -33,7 +54,7 @@
     (evil-commentary company-go company-quickhelp company rainbow-delimiters which-key swiper ivy projectile doom-themes evil-leader evil use-package)))
  '(package-selected-packages
    (quote
-    (python-black docker dockerfile auto-package-update dockerfile-mode graphviz-dot-mode eval-sexp-fu graph-viz-dot-mode slime aggressive-indent slime-company evil-surround prettier-js prettier-js-mode typescript-mode javascript-mode typescript javascript ts-mode js-mode vue-mode vmd-mode multimarkdown markdown-mode counsel counsel-mode terraform-mode evil-magit magit flycheck exec-path-from-shell treemacs-projectile treemacs-evil treemacs evil-commentary company-go company-quickhelp company rainbow-delimiters which-key swiper ivy projectile doom-themes evil-leader evil use-package)))
+    (elm-mode lsp-haskell lsp-ui lsp-mode haskell-mode rust-mode forth-mode python-black docker dockerfile auto-package-update dockerfile-mode graphviz-dot-mode eval-sexp-fu graph-viz-dot-mode slime aggressive-indent slime-company evil-surround prettier-js prettier-js-mode typescript-mode javascript-mode typescript javascript ts-mode js-mode vue-mode vmd-mode multimarkdown markdown-mode counsel counsel-mode terraform-mode evil-magit magit flycheck exec-path-from-shell treemacs-projectile treemacs-evil treemacs evil-commentary company-go company-quickhelp company rainbow-delimiters which-key swiper ivy projectile doom-themes evil-leader evil use-package)))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

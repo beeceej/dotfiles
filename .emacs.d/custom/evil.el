@@ -53,6 +53,7 @@
       "ff" 'find-file
       "glb" 'magit-log-buffer-file
       "gs" 'magit
+      "of" 'ns-open-file-using-panel
       "p$t" 'projectile-run-term
       "pf" 'projectile-find-file
       "pp" 'projectile-switch-project
@@ -70,6 +71,10 @@
       "wj" 'windmove-down
       "wk" 'windmove-up
       "wl" 'windmove-right
+      "wsk" 'evil-window-increase-height
+      "wsj" 'evil-window-decrease-height
+      "wsl" 'evil-window-increase-width
+      "wsh" 'evil-window-decrease-width
       "ww" 'next-multiframe-window)
     (evil-leader/set-key-for-mode 'go-mode "gg" 'godef-jump)
     (evil-leader/set-key-for-mode 'lisp-mode "ef" 'slime-eval-defun)
