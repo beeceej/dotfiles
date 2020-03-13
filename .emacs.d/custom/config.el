@@ -35,7 +35,7 @@ most everything else depends on it from here on out."
 (defun custom-config--font ()
   "Set up my preferred font."
 
-  (set-frame-font "Inconsolata 14"))
+  (set-frame-font "Liberation Mono 14"))
 
 (defun custom-config--base ()
   "Basic configuration, kind of a catch all at this point."
