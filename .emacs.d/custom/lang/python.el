@@ -9,7 +9,11 @@
     (setq elpy-modules (remq 'elpy-module-highlight-indentation elpy-modules))
     (setq elpy-modules (remq 'elpy-module-flymake elpy-modules))
     (setq elpy-rpc-python-command python-shell-interpreter)
-    (elpy-enable))
+    (elpy-enable)
+    (add-hook 'elpy-mode-hook
+	      (lambda ()
+		(set (make-local-variable 'company-backends)
+		     '((company-dabbrev-code company-yasnippet elpy-company-backend))))))
   (use-package python-black
     :ensure t
     :after python
