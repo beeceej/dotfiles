@@ -59,6 +59,7 @@
       "pp" 'projectile-switch-project
       "pt" 'treemacs
       "sgp" 'counsel-git-grep
+      "pg" 'projectile-ripgrep
       "sl" 'sort-lines
       "ss" 'swiper
       "tsp" 'treemacs-switch-workspace
@@ -78,6 +79,8 @@
       "wsh" 'evil-window-decrease-width
       "ww" 'next-multiframe-window)
     (evil-leader/set-key-for-mode 'go-mode "gg" 'godef-jump)
+    (evil-leader/set-key-for-mode 'tide-mode "gg" 'tide-jump-to-definition)
+    (evil-leader/set-key-for-mode 'js-mode "gg" 'tide-jump-to-definition)
     (evil-leader/set-key-for-mode 'lisp-mode "ef" 'slime-eval-defun)
     (evil-leader/set-key-for-mode 'lisp-mode "er" 'slime-eval-region)
     (evil-leader/set-key-for-mode 'emacs-lisp-mode "ef" 'eval-defun)

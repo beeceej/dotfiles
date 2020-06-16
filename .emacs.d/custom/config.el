@@ -99,6 +99,7 @@ most everything else depends on it from here on out."
     (setq projectile-completion-system 'ivy)
     (setq projectile-project-search-path '("~/Code"))
     :config
+    (use-package projectile-ripgrep :ensure t)
     (projectile-mode)
     (setq projectile-enable-caching t))
 
@@ -142,12 +143,7 @@ most everything else depends on it from here on out."
     :defer t
     :init
     (with-eval-after-load 'company
-      (add-to-list 'company-backends 'company-slime)))
-
-  (use-package aggressive-indent
-    :ensure t
-    :config
-    (global-aggressive-indent-mode 1)))
+      (add-to-list 'company-backends 'company-slime))))
 
 (defun custom-config--evil ()
   "load my evil configuration, this provides vim keys"
