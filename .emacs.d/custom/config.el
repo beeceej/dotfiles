@@ -99,6 +99,7 @@ most everything else depends on it from here on out."
     (setq projectile-completion-system 'ivy)
     (setq projectile-project-search-path '("~/Code"))
     :config
+    (use-package projectile-ripgrep :ensure t)
     (projectile-mode)
     (setq projectile-enable-caching t))
 

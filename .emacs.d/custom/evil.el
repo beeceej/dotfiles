@@ -59,6 +59,7 @@
       "pp" 'projectile-switch-project
       "pt" 'treemacs
       "sgp" 'counsel-git-grep
+      "pg" 'projectile-ripgrep
       "sl" 'sort-lines
       "ss" 'swiper
       "tsp" 'treemacs-switch-workspace
