@@ -35,7 +35,7 @@ most everything else depends on it from here on out."
 (defun custom-config--font ()
   "Set up my preferred font."
 
-  (set-frame-font "Liberation Mono 14"))
+  (set-frame-font "jetbrains mono 14"))
 
 (defun custom-config--base ()
   "Basic configuration, kind of a catch all at this point."
@@ -84,7 +84,7 @@ most everything else depends on it from here on out."
 	     (ticket-parts (split-string (nth 1 (split-string curr-branch "/")) "-"))
 	     (project-name (nth 0 ticket-parts))
 	     (ticket-num (nth 1 ticket-parts)))
-	(insert (concat "[" project-name "-" ticket-num "]"))))
+	(insert (concat "feat(" project-name "-" ticket-num "):"))))
     (add-hook 'git-commit-setup-hook 'setup-commit))
 
   (use-package swiper
@@ -121,7 +121,8 @@ most everything else depends on it from here on out."
       (bind-key [remap completion-at-point] #'company-complete company-mode-map)
       (setq
        company-tooltip-align-annotations t
-       company-show-numbers t)
+       company-show-numbers t
+       company-minimum-prefix-length 0)
       (add-to-list 'company-backends 'company-elisp))
     :diminish company-mode)
 
@@ -137,6 +138,15 @@ most everything else depends on it from here on out."
     (with-eval-after-load 'company
       (add-to-list 'company-backends 'company-go)
       ))
+
+  (use-package company-lsp
+    :ensure t
+    :defer t
+    :init
+    (with-eval-after-load 'company
+      (add-to-list 'company-backends 'company-lsp))
+    :config
+    (setq company-lsp-cache-candidates 'auto))
 
   (use-package slime-company
     :ensure t

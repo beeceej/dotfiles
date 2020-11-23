@@ -13,6 +13,13 @@
   (exec-path-from-shell-initialize))
 (setq shell-file-name "/bin/bash")
 
+(setq-default bidi-paragraph-direction 'left-to-right)
+(if (version<= "27.1" emacs-version)
+    (setq bidi-inhibit-bpa t))
+
+(if (version<= "27.1" emacs-version)
+    (global-so-long-mode 1))
+
 (use-package eval-sexp-fu
   :ensure t
   :config
@@ -21,25 +28,12 @@
 
 (use-package yasnippet
   :ensure t)
-(use-package lsp-mode
-  :ensure t
-  ;; :hook (elm-mode . lsp)
-  :commands lsp)
-(use-package lsp-ui
-  :ensure t
-  :commands lsp-ui-mode)
-(use-package lsp-haskell
-  :ensure t
-  :config
-  (setq lsp-haskell-process-path-hie "ghcide")
-  (setq lsp-haskell-process-args-hie '())
-  ;; Comment/uncomment this line to see interactions between lsp client/server.
-  ;;(setq lsp-log-io t)
-  )
 
 ;; (add-to-list 'load-path "/Users/brianjones/.opam/default/share/emacs/site-lisp")
 ;; (require 'ocp-indent)
 
+(setq gc-cons-threshold 500000000)
+(setq read-process-output-max (* 1024 1024)) ;;1mb
 (setq lsp-print-io t)
 
 ;; ==================================================

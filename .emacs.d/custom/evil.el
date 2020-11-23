@@ -78,7 +78,7 @@
       "wsl" 'evil-window-increase-width
       "wsh" 'evil-window-decrease-width
       "ww" 'next-multiframe-window)
-    (evil-leader/set-key-for-mode 'go-mode "gg" 'godef-jump)
+    (evil-leader/set-key-for-mode 'go-mode "gg" 'lsp-find-definition)
     (evil-leader/set-key-for-mode 'tide-mode "gg" 'tide-jump-to-definition)
     (evil-leader/set-key-for-mode 'js-mode "gg" 'tide-jump-to-definition)
     (evil-leader/set-key-for-mode 'lisp-mode "ef" 'slime-eval-defun)

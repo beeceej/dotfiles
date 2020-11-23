@@ -18,12 +18,11 @@
 
   (add-hook 'js-mode-hook #'setup-tide-mode)
   (add-hook 'js-mode-hook 'prettier-js-mode)
-  ;; (flycheck-javascript-standard-executable "standardx")
   (setq prettier-js-args '(
+			   "--arrow-parens" "always"
 			   "--trailing-comma" "es5"
 			   "--bracket-spacing" "true"
 			   "--single-quote" "true"
-			   "--no-semi" "true"
 			   "--jsx-single-quote" "true"
 			   "--jsx-bracket-same-line" "true"
 			   "--print-width" "100"))
