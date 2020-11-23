@@ -121,7 +121,8 @@ most everything else depends on it from here on out."
       (bind-key [remap completion-at-point] #'company-complete company-mode-map)
       (setq
        company-tooltip-align-annotations t
-       company-show-numbers t)
+       company-show-numbers t
+       company-minimum-prefix-length 0)
       (add-to-list 'company-backends 'company-elisp))
     :diminish company-mode)
 
