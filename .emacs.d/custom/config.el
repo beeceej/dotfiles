@@ -114,23 +114,6 @@ most everything else depends on it from here on out."
     :defer t
     :init (add-hook 'global-company-mode-hook #'company-quickhelp-mode))
 
-  (use-package company-go
-    :ensure t
-    :defer t
-    :init
-    (with-eval-after-load 'company
-      (add-to-list 'company-backends 'company-go)
-      ))
-
-  (use-package company-lsp
-    :ensure t
-    :defer t
-    :init
-    (with-eval-after-load 'company
-      (add-to-list 'company-backends 'company-lsp))
-    :config
-    (setq company-lsp-cache-candidates 'auto))
-
   (use-package slime-company
     :ensure t
     :defer t
