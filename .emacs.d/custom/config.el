@@ -103,13 +103,6 @@ most everything else depends on it from here on out."
     (projectile-mode)
     (setq projectile-enable-caching t))
 
-  (use-package treemacs
-    :ensure t
-    :config
-    (use-package treemacs-evil
-      :ensure t)
-    (use-package treemacs-projectile
-      :ensure t))
 
   (use-package company
     :ensure t
