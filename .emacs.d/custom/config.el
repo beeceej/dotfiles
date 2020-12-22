@@ -79,19 +79,17 @@ most everything else depends on it from here on out."
     (ivy-mode 1)
     (setq ivy-use-virtual-buffers t)
     (setq enable-recursive-minibuffers t))
+  (use-package swiper
+    :ensure t
+    :after (ivy))
+  (use-package counsel
+    :ensure t
+    :after (ivy))
 
   (use-package which-key
     :ensure t
     :config
     (which-key-mode))
-
-
-
-  (use-package swiper
-    :ensure t)
-
-  (use-package counsel
-    :ensure t)
 
   (use-package projectile
     :ensure t
