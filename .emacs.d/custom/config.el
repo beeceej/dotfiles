@@ -14,43 +14,17 @@
 ;; Programming language configuration
 (load "~/.emacs.d/custom/lang.el")
 
-
 (defun load-custom-config ()
-  "Set up use package.
-this should be the very first thing done
-most everything else depends on it from here on out."
-  (custom-config--use-package)
-  (custom-config--theme)
-  (custom-config--font)
-  (custom-config--base)
-  (custom-config--evil)
-  ;; delete trailing whitespace on save
-  (add-hook 'before-save-hook
-	    'delete-trailing-whitespace))
+  "Set up custom configuration."
 
-(defun custom-config--use-package ()
-  "Set up use-package, which is what we'll use to install most dependencies from here on out."
+  ;; use-package setup
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
     (package-install 'use-package))
-  (require 'use-package))
+  (require 'use-package)
 
-(defun custom-config--theme ()
-  "Set up my custom Emacs theme."
-
-  (use-package doom-themes
-    :ensure t
-    :config
-    (load-theme 'doom-one t)))
-
-(defun custom-config--font ()
-  "Set up my preferred font."
-
-  (set-frame-font "jetbrains mono 14"))
-
-(defun custom-config--base ()
-  "Basic configuration, kind of a catch all at this point."
-
+  ;; look and feel
+  (set-frame-font "jetbrains mono 10")
   (global-linum-mode)
   (blink-cursor-mode 0)
   (global-hl-line-mode)
@@ -58,16 +32,27 @@ most everything else depends on it from here on out."
   (toggle-scroll-bar -1)
   (tool-bar-mode -1)
   (show-paren-mode 1)
-
+  (use-package doom-themes
+    :ensure t
+    :config (load-theme 'doom-one t))
   (use-package rainbow-delimiters
     :ensure t
     :config
     (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
-
   (use-package autopair
     :ensure t
     :config
     (autopair-global-mode))
+
+  (custom-config--base)
+  (custom-config--evil)
+  ;; delete trailing whitespace on save
+  (add-hook 'before-save-hook
+	    'delete-trailing-whitespace))
+
+
+(defun custom-config--base ()
+  "Basic configuration, kind of a catch all at this point."
 
   (use-package flycheck
     :ensure t
@@ -129,9 +114,7 @@ most everything else depends on it from here on out."
       (add-to-list 'company-backends 'company-slime))))
 
 (defun custom-config--evil ()
-  "load my evil configuration, this provides vim keys"
+  "Load my evil configuration, this provides vim keys."
   (load-custom-config/evil))
 
-(defun custom-config--lang ()
-  "Load programming specific configuration"
-  (load-custom-config/lang))
+;;; config.el ends here
