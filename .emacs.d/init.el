@@ -28,9 +28,7 @@
 
 
 
-(setq gc-cons-threshold 500000000)
 (setq read-process-output-max (* 1024 1024)) ;;1mb
-(setq lsp-print-io t)
 
 ;; ==================================================
 ;; ===============End Custom Config==================
