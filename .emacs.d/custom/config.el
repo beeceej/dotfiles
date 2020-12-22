@@ -1,5 +1,4 @@
 (load "~/.emacs.d/custom/evil.el")
-(load "~/.emacs.d/custom/cmd/cmd.el")
 ;; Programming language configuration
 (load "~/.emacs.d/custom/lang.el")
 
