@@ -1,8 +1,19 @@
+;;;; config.el --- custom emacs configuration
+
+;;; Commentary:
+;;; sets up all the fun stuff
+
+;;; Code:
+
+;; custom EVIL mode configuration
 (load "~/.emacs.d/custom/evil.el")
+
+;; custom magit configuration
 (load "~/.emacs.d/custom/magit.el")
 
 ;; Programming language configuration
 (load "~/.emacs.d/custom/lang.el")
+
 
 (defun load-custom-config ()
   "Set up use package.
@@ -19,7 +30,6 @@ most everything else depends on it from here on out."
 
 (defun custom-config--use-package ()
   "Set up use-package, which is what we'll use to install most dependencies from here on out."
-
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
     (package-install 'use-package))
@@ -92,7 +102,6 @@ most everything else depends on it from here on out."
     (use-package projectile-ripgrep :ensure t)
     (projectile-mode)
     (setq projectile-enable-caching t))
-
 
   (use-package company
     :ensure t
