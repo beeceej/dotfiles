@@ -1,6 +1,7 @@
 (load "~/.emacs.d/custom/evil.el")
-(load "~/.emacs.d/custom/lang/lang.el")
 (load "~/.emacs.d/custom/cmd/cmd.el")
+;; Programming language configuration
+(load "~/.emacs.d/custom/lang.el")
 
 (defun load-custom-config ()
   "Set up use package.
@@ -11,7 +12,6 @@ most everything else depends on it from here on out."
   (custom-config--font)
   (custom-config--base)
   (custom-config--evil)
-  (custom-config--lang)
   ;; delete trailing whitespace on save
   (add-hook 'before-save-hook
 	    'delete-trailing-whitespace))
