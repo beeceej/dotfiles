@@ -10,13 +10,13 @@
 ;; ----------------------------------------------------------------------------------------
 
 ;; COMMON LISP
-(use-package slime
-  :ensure t
-  :config (load (expand-file-name "~/quicklisp/slime-helper.el"))
-  ;; Replace "sbcl" with the path to your implementation
-  ;; Set your lisp system and, optionally, some contribs
-  (setq slime-contribs '(slime-fancy slime-company))
-  (setq inferior-lisp-program "sbcl"))
+;(use-package slime
+;  :ensure t
+;  :config (load (expand-file-name "~/quicklisp/slime-helper.el"))
+;  ;; Replace "sbcl" with the path to your implementation
+;  ;; Set your lisp system and, optionally, some contribs
+;  (setq slime-contribs '(slime-fancy slime-company))
+;  (setq inferior-lisp-program "sbcl"))
 ;; ----------------------------------------------------------------------------------------
 
 ;; OCAML
@@ -64,16 +64,44 @@
 ;; TERRAFORM ------------------------------------------------------------------------------
 (use-package terraform-mode
   :ensure t
-  :config (add-hook 'before-save-hook 'terraform-format-buffer))
+  :config (add-hook 'terraform-mode-hook 'terraform-format-buffer))
 ;; ----------------------------------------------------------------------------------------
 
-;; LSP
-(use-package eglot
-  :ensure t
-  :config
-  (add-to-list 'eglot-server-programs
-               '(haskell-mode . ("haskell-language-server-wrapper" "--lsp"))))
+;; eglot-organize-imports is hopefully a temporary stopgap until
+;; https://github.com/joaotavora/eglot/issues/574 is addressed.
+(defun eglot-organize-imports ()
+  "Offer to execute the source.organizeImports code action."
+  (interactive)
+  (unless (eglot--server-capable :codeActionProvider)
+	(eglot--error "Server can't execute code actions!"))
+  (let* ((server (eglot--current-server-or-lose))
+		 (actions (jsonrpc-request
+				   server
+				   :textDocument/codeAction
+				   (list :textDocument (eglot--TextDocumentIdentifier))))
+		 (action (cl-find-if
+				  (jsonrpc-lambda (&key kind &allow-other-keys)
+					(string-equal kind "source.organizeImports" ))
+				  actions)))
+	(when action
+	  (eglot--dcase action
+		(((Command) command arguments)
+		 (eglot-execute-command server (intern command) arguments))
+		(((CodeAction) edit command)
+		 (when edit (eglot--apply-workspace-edit edit))
+		 (when command
+		   (eglot--dbind ((Command) command arguments) command
+			 (eglot-execute-command server (intern command) arguments))))))))
 
+;; LSP
+(use-package eglot  :ensure t)
+
+
+(use-package go-mode
+  :ensure t
+  :after eglot
+  :config
+  (add-hook 'go-mode-hook #'eglot-ensure))
 
 ;; snippets
 (use-package yasnippet :ensure t)
