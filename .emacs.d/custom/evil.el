@@ -54,6 +54,7 @@
       "glb" 'magit-log-buffer-file
       "gs" 'magit
       "of" 'ns-open-file-using-panel
+      "oi" 'eglot-organize-imports
       "p$t" 'projectile-run-term
       "pf" 'projectile-find-file
       "pp" 'projectile-switch-project
@@ -77,8 +78,8 @@
       "wsj" 'evil-window-decrease-height
       "wsl" 'evil-window-increase-width
       "wsh" 'evil-window-decrease-width
+      "gg" 'xref-find-definitions
       "ww" 'next-multiframe-window)
-    (evil-leader/set-key-for-mode 'go-mode "gg" 'lsp-find-definition)
     (evil-leader/set-key-for-mode 'tide-mode "gg" 'tide-jump-to-definition)
     (evil-leader/set-key-for-mode 'js-mode "gg" 'tide-jump-to-definition)
     (evil-leader/set-key-for-mode 'lisp-mode "ef" 'slime-eval-defun)

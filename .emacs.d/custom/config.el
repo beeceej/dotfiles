@@ -5,23 +5,25 @@
 
 ;;; Code:
 
+;; use-package setup
+(unless (package-installed-p 'use-package)
+	(package-refresh-contents)
+	(package-install 'use-package))
+(require 'use-package)
+
+;; Programming language configuration
+(load "~/.emacs.d/custom/lang.el")
+
 ;; custom EVIL mode configuration
 (load "~/.emacs.d/custom/evil.el")
 
 ;; custom magit configuration
 (load "~/.emacs.d/custom/magit.el")
 
-;; Programming language configuration
-(load "~/.emacs.d/custom/lang.el")
 
 (defun load-custom-config ()
   "Set up custom configuration."
 
-  ;; use-package setup
-  (unless (package-installed-p 'use-package)
-    (package-refresh-contents)
-    (package-install 'use-package))
-  (require 'use-package)
 
   ;; look and feel
   (set-frame-font "jetbrains mono 10")
@@ -32,6 +34,7 @@
   (toggle-scroll-bar -1)
   (tool-bar-mode -1)
   (show-paren-mode 1)
+  (setq-default tab-width 4)
   (use-package doom-themes
     :ensure t
     :config (load-theme 'doom-one t))
@@ -47,13 +50,11 @@
   (custom-config--base)
   (custom-config--evil)
   ;; delete trailing whitespace on save
-  (add-hook 'before-save-hook
-	    'delete-trailing-whitespace))
+  (add-hook 'before-save-hook 'delete-trailing-whitespace))
 
 
 (defun custom-config--base ()
   "Basic configuration, kind of a catch all at this point."
-
   (use-package flycheck
     :ensure t
     :init (global-flycheck-mode))
@@ -82,9 +83,9 @@
     (setq projectile-completion-system 'ivy)
     (setq projectile-project-search-path '("~/Code"))
     :config
-    (use-package projectile-ripgrep :ensure t)
     (projectile-mode)
     (setq projectile-enable-caching t))
+    (use-package projectile-ripgrep :ensure t :after (projectile))
 
   (use-package company
     :ensure t
@@ -103,11 +104,13 @@
 
   (use-package company-quickhelp          ; Documentation popups for Company
     :ensure t
+	:after (company)
     :defer t
     :init (add-hook 'global-company-mode-hook #'company-quickhelp-mode))
 
   (use-package slime-company
     :ensure t
+    :after (company)
     :defer t
     :init
     (with-eval-after-load 'company

@@ -22,10 +22,7 @@
 
 (use-package eval-sexp-fu
   :ensure t
-  :config
-  (eval-sexp-fu-flash-mode))
-;; LSP
-
+  :config (eval-sexp-fu-flash-mode))
 
 
 (setq read-process-output-max (* 1024 1024)) ;;1mb
@@ -41,13 +38,13 @@
  ;; If there is more than one, they won't work right.
  '(autopair-global-mode t)
  '(package-selected-package
-   '(evil-commentary company-go company-quickhelp company rainbow-delimiters which-key swiper ivy projectile doom-themes evil-leader evil use-package))
+   '(evil-commentary company-quickhelp company rainbow-delimiters which-key swiper ivy projectile doom-themes evil-leader evil use-package))
  '(package-selected-packages
-   '(sbt-mode scala-mode t: tide-mode tide projectile-ripgrep tuareg elm-mode lsp-haskell lsp-ui lsp-mode haskell-mode rust-mode forth-mode python-black docker dockerfile auto-package-update dockerfile-mode graphviz-dot-mode eval-sexp-fu graph-viz-dot-mode slime aggressive-indent slime-company evil-surround prettier-js prettier-js-mode typescript-mode javascript-mode typescript javascript ts-mode js-mode vue-mode vmd-mode multimarkdown markdown-mode counsel counsel-mode terraform-mode evil-magit magit flycheck exec-path-from-shell treemacs-projectile treemacs-evil treemacs evil-commentary company-go company-quickhelp company rainbow-delimiters which-key swiper ivy projectile doom-themes evil-leader evil use-package))
+   '(go-mode eglot sbt-mode scala-mode t: tide-mode tide projectile-ripgrep tuareg elm-mode lsp-haskell lsp-ui lsp-mode haskell-mode rust-mode forth-mode python-black docker dockerfile auto-package-update dockerfile-mode graphviz-dot-mode eval-sexp-fu graph-viz-dot-mode slime aggressive-indent slime-company evil-surround prettier-js prettier-js-mode typescript-mode javascript-mode typescript javascript ts-mode js-mode vue-mode vmd-mode multimarkdown markdown-mode counsel counsel-mode terraform-mode evil-magit magit flycheck exec-path-from-shell treemacs-projectile treemacs-evil treemacs evil-commentary company-quickhelp company rainbow-delimiters which-key swiper ivy projectile doom-themes evil-leader evil use-package))
  '(projectile-mode t nil (projectile))
  '(safe-local-variable-values
    '((haskell-process-use-ghci . t)
-     (haskell-indent-spaces . 4))))
+	 (haskell-indent-spaces . 4))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
