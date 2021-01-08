@@ -24,9 +24,10 @@
 (defun load-custom-config ()
   "Set up custom configuration."
 
-
   ;; look and feel
-  (set-frame-font "jetbrains mono 10")
+  (condition-case nil
+	  (set-frame-font "jetbrains mono 10")
+	(error nil))
   (global-linum-mode)
   (blink-cursor-mode 0)
   (global-hl-line-mode)
