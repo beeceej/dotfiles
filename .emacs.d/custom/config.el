@@ -84,9 +84,11 @@
     (setq projectile-completion-system 'ivy)
     (setq projectile-project-search-path '("~/Code"))
     :config
-    (projectile-mode)
-    (setq projectile-enable-caching t))
-    (use-package projectile-ripgrep :ensure t :after (projectile))
+    (projectile-mode))
+
+  (use-package projectile-ripgrep
+	:ensure t
+	:after (projectile))
 
   (use-package company
     :ensure t

@@ -48,16 +48,36 @@
 ;; ----------------------------------------------------------------------------------------
 
 ;; Javascript/Typescript/Web --------------------------------------------------------------
+
+(use-package rjsx-mode
+  :ensure t
+  :mode ("\\.js\\'"
+         "\\.jsx\\'")
+  :config
+  (setq js2-mode-show-parse-errors nil
+        js2-mode-show-strict-warnings nil
+        js2-basic-offset 2
+        js-indent-level 2)
+  (setq-local flycheck-disabled-checkers (cl-union flycheck-disabled-checkers
+												   ; jshint doesn't work for JSX
+                                                   '(javascript-jshint))))
+(use-package add-node-modules-path
+  :ensure t
+  :defer t
+  :hook (((js2-mode rjsx-mode) . add-node-modules-path)))
+
 (use-package typescript-mode :ensure t)
 (defvar prettier-enabled-modes
   '(typescript-mode-hook
     vue-mode-hook
-    json-mode-hook)
+    json-mode-hook
+	rjsx-mode-hook)
   "modes that prettier should be loaded for")
 (use-package prettier-js
   :ensure t
   :config (dolist (hook prettier-enabled-modes)
-	    (add-hook hook 'prettier-js-mode)))
+			(add-hook hook 'prettier-js-mode)))
+
 ;; ----------------------------------------------------------------------------------------
 
 
@@ -95,6 +115,8 @@
 
 ;; LSP
 (use-package eglot  :ensure t)
+
+(use-package pyvenv :ensure t)
 
 
 (use-package go-mode
