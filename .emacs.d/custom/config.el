@@ -12,7 +12,6 @@
 (require 'use-package)
 
 ;; Programming language configuration
-(load "~/.emacs.d/custom/lang.el")
 
 ;; custom EVIL mode configuration
 (load "~/.emacs.d/custom/evil.el")
@@ -23,14 +22,14 @@
 
 (defun load-custom-config ()
   "Set up custom configuration."
-
   ;; look and feel
   (condition-case nil
-	  (set-frame-font "jetbrains mono 10")
+	  (progn
+		(mac-auto-operator-composition-mode)
+		(set-frame-font "Fira Code 14"))
 	(error nil))
-  (global-linum-mode)
+  ;; (global-linum-mode)
   (blink-cursor-mode 0)
-  (global-hl-line-mode)
   (menu-bar-mode -1)
   (toggle-scroll-bar -1)
   (tool-bar-mode -1)
@@ -39,14 +38,7 @@
   (use-package doom-themes
     :ensure t
     :config (load-theme 'doom-one t))
-  (use-package rainbow-delimiters
-    :ensure t
-    :config
-    (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
-  (use-package autopair
-    :ensure t
-    :config
-    (autopair-global-mode))
+
 
   (custom-config--base)
   (custom-config--evil)
@@ -56,22 +48,30 @@
 
 (defun custom-config--base ()
   "Basic configuration, kind of a catch all at this point."
-  (use-package flycheck
-    :ensure t
-    :init (global-flycheck-mode))
+  ;; (use-package flycheck
+  ;;   :ensure t
+  ;;   :init (global-flycheck-mode))
 
-  (use-package ivy
-    :ensure t
-    :config
-    (ivy-mode 1)
-    (setq ivy-use-virtual-buffers t)
-    (setq enable-recursive-minibuffers t))
-  (use-package swiper
-    :ensure t
-    :after (ivy))
-  (use-package counsel
-    :ensure t
-    :after (ivy))
+  ;; (use-package ivy
+  ;;   :ensure t
+  ;;   :config
+  ;;   (ivy-mode 1)
+  ;;   (setq ivy-use-virtual-buffers t)
+  ;;   (setq enable-recursive-minibuffers t))
+  (setq ido-enable-flex-matching t)
+  (setq ido-everywhere t)
+  (ido-mode 1)
+  (use-package ido-grid-mode
+	:ensure t
+	:config
+	(ido-grid-mode 1))
+  (use-package smex :ensure t :after ido-grid-mode)
+  ;; (use-package swiper
+  ;;   :ensure t
+  ;;   :after (ivy))
+  ;; (use-package counsel
+  ;;   :ensure t
+  ;;   :after (ivy))
 
   (use-package which-key
     :ensure t
@@ -81,46 +81,64 @@
   (use-package projectile
     :ensure t
     :init
-    (setq projectile-completion-system 'ivy)
+    (setq projectile-completion-system 'ido)
     (setq projectile-project-search-path '("~/Code"))
+	(setq projectile-indexing-method 'alien)
     :config
     (projectile-mode))
 
   (use-package projectile-ripgrep
 	:ensure t
-	:after (projectile))
+	:after (projectile)))
 
-  (use-package company
-    :ensure t
-    :defer t
-    :init (global-company-mode)
-    :config
-    (progn
-      ;; Use Company for completion
-      (bind-key [remap completion-at-point] #'company-complete company-mode-map)
-      (setq
-       company-tooltip-align-annotations t
-       company-show-numbers t
-       company-minimum-prefix-length 0)
-      (add-to-list 'company-backends 'company-elisp))
-    :diminish company-mode)
-
-  (use-package company-quickhelp          ; Documentation popups for Company
-    :ensure t
-	:after (company)
-    :defer t
-    :init (add-hook 'global-company-mode-hook #'company-quickhelp-mode))
-
-  (use-package slime-company
-    :ensure t
-    :after (company)
-    :defer t
-    :init
-    (with-eval-after-load 'company
-      (add-to-list 'company-backends 'company-slime))))
 
 (defun custom-config--evil ()
   "Load my evil configuration, this provides vim keys."
   (load-custom-config/evil))
+
+(defun python-to-json ($string &optional $from $to)
+  "Remove the following letters: {a e i o u}.
+
+When called interactively, work on current paragraph or text selection.
+
+When called in lisp code, if $string is non-nil, returns a changed string.
+If $string nil, change the text in the region between positions $from $to."
+  (interactive
+   (if (use-region-p)
+       (list nil (region-beginning) (region-end))
+     (let ((bds (bounds-of-thing-at-point 'paragraph)) )
+       (list nil (car bds) (cdr bds)) ) ) )
+
+  (let (workOnStringP inputStr outputStr)
+    (setq workOnStringP (if $string t nil))
+    (setq inputStr (if workOnStringP $string (buffer-substring-no-properties $from $to)))
+    (setq outputStr
+          (let ((case-fold-search t))
+            (replace-regexp-in-string " false" " false" inputStr)))
+    (setq outputStr
+          (let ((case-fold-search t))
+            (replace-regexp-in-string "\\[false\\]" "\[false\]" outputStr)))
+    (setq outputStr
+          (let ((case-fold-search t))
+            (replace-regexp-in-string " true" " true" outputStr)))
+    (setq outputStr
+          (let ((case-fold-search t))
+            (replace-regexp-in-string "\\[true\\]" "\[true\]" outputStr)))
+    (setq outputStr
+          (let ((case-fold-search t))
+            (replace-regexp-in-string " None" " null" outputStr)))
+    (setq outputStr
+          (let ((case-fold-search t))
+            (replace-regexp-in-string "None" "null" outputStr)))
+    (setq outputStr
+          (let ((case-fold-search t))
+            (replace-regexp-in-string "'" "\"" outputStr)))
+
+    (if workOnStringP
+        outputStr
+      (save-excursion
+        (delete-region $from $to)
+        (goto-char $from)
+        (insert outputStr)))))
 
 ;;; config.el ends here
