@@ -48,31 +48,15 @@
 
 (defun custom-config--base ()
   "Basic configuration, kind of a catch all at this point."
-  ;; (use-package flycheck
-  ;;   :ensure t
-  ;;   :init (global-flycheck-mode))
-
-  ;; (use-package ivy
-  ;;   :ensure t
-  ;;   :config
-  ;;   (ivy-mode 1)
-  ;;   (setq ivy-use-virtual-buffers t)
-  ;;   (setq enable-recursive-minibuffers t))
   (setq ido-enable-flex-matching t)
-  (setq ido-everywhere t)
   (ido-mode 1)
+  (setq ido-everywhere t)
   (use-package ido-grid-mode
 	:ensure t
 	:config
 	(ido-grid-mode 1))
+  (ido-ubiquitous-mode)
   (use-package smex :ensure t :after ido-grid-mode)
-  ;; (use-package swiper
-  ;;   :ensure t
-  ;;   :after (ivy))
-  ;; (use-package counsel
-  ;;   :ensure t
-  ;;   :after (ivy))
-
   (use-package which-key
     :ensure t
     :config
