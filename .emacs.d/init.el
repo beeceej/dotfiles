@@ -1,3 +1,8 @@
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+;; and `package-pinned-packages`. Most users will not need or want to do this.
+;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 (load "~/.emacs.d/custom/config.el")
 (add-to-list 'package-archives
@@ -13,13 +18,8 @@
       (setq bidi-inhibit-bpa t)))
 
 (electric-pair-mode)
-(setq backup-directory-alist `(("." . "~/.saves")))
-(use-package no-littering :ensure t :config
-  (setq no-littering-var-directory "auto-save/"))
+(setq backup-directory (* 1024 1024)) ;;1mb
 
-(setq auto-save-default nil)
-(setq gc-cons-threshold 8000)
-(setq read-process-output-max (* 1024 1024)) ;;1mb
 (use-package tree-sitter :ensure t :config (global-tree-sitter-mode) (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 (use-package tree-sitter-langs :ensure t :after tree-sitter)
 (use-package php-mode :ensure t)

@@ -25,8 +25,7 @@
   ;; look and feel
   (condition-case nil
 	  (progn
-		(mac-auto-operator-composition-mode)
-		(set-frame-font "Fira Code 14"))
+		(set-frame-font "Jetbrains Mono 14"))
 	(error nil))
   ;; (global-linum-mode)
   (blink-cursor-mode 0)
