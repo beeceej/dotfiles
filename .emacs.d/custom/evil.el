@@ -8,6 +8,7 @@
     (setq evil-split-window-below t)
     (setq evil-shift-round nil)
     (setq evil-want-C-u-scroll t)
+	(setq evil-want-keybinding nil)
     :config
     ;; multi cursor support
     (custom-config/evil--evil-mc)
@@ -17,6 +18,7 @@
     (custom-config/evil--evil-commentary)
     ;; quick vim style surrounding
     (custom-config/evil--evil-surround)
+    (custom-config/evil--evil-collection)
     (evil-mode)
     (evil-define-key 'normal lisp-mode-map
       (kbd "TAB") 'evil-indent)))
@@ -89,3 +91,10 @@
     (evil-leader/set-key-for-mode 'python-mode "eb" 'elpy-shell-send-buffer)
     (evil-leader/set-key-for-mode 'graphviz-dot-mode "cp" 'graphviz-dot-preview)
     (global-evil-leader-mode)))
+
+(defun custom-config/evil--evil-collection ()
+  (use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init)))

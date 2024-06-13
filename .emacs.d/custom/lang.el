@@ -87,43 +87,27 @@
   :config (add-hook 'terraform-mode-hook 'terraform-format-buffer))
 ;; ----------------------------------------------------------------------------------------
 
-;; eglot-organize-imports is hopefully a temporary stopgap until
-;; https://github.com/joaotavora/eglot/issues/574 is addressed.
-(defun eglot-organize-imports ()
-  "Offer to execute the source.organizeImports code action."
-  (interactive)
-  (unless (eglot--server-capable :codeActionProvider)
-	(eglot--error "Server can't execute code actions!"))
-  (let* ((server (eglot--current-server-or-lose))
-		 (actions (jsonrpc-request
-				   server
-				   :textDocument/codeAction
-				   (list :textDocument (eglot--TextDocumentIdentifier))))
-		 (action (cl-find-if
-				  (jsonrpc-lambda (&key kind &allow-other-keys)
-					(string-equal kind "source.organizeImports" ))
-				  actions)))
-	(when action
-	  (eglot--dcase action
-		(((Command) command arguments)
-		 (eglot-execute-command server (intern command) arguments))
-		(((CodeAction) edit command)
-		 (when edit (eglot--apply-workspace-edit edit))
-		 (when command
-		   (eglot--dbind ((Command) command arguments) command
-			 (eglot-execute-command server (intern command) arguments))))))))
-
-;; LSP
-(use-package eglot  :ensure t)
 
 (use-package pyvenv :ensure t)
 
 
 (use-package go-mode
   :ensure t
-  :after eglot
-  :config
-  (add-hook 'go-mode-hook #'eglot-ensure))
+  :config)
+
+(require 'eglot)
+(add-hook 'go-mode-hook #'eglot-ensure)
+
+(defun my-eglot-organize-imports () (interactive)
+	   (eglot-code-actions nil nil "source.organizeImports" t))
+
+  ;; Set up before-save hooks to format buffer and add/delete imports.
+  ;; Make sure you don't have other gofmt/goimports hooks enabled.
+  (defun lsp-go-install-save-hooks ()
+	(add-hook 'before-save-hook #'eglot-format-buffer t t)
+	(add-hook 'before-save-hook #'my-eglot-organize-imports t t))
+  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+
 
 ;; snippets
 (use-package yasnippet :ensure t)

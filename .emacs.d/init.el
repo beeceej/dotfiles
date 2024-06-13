@@ -40,7 +40,7 @@
  '(package-selected-package
    '(evil-commentary company-quickhelp company rainbow-delimiters which-key swiper ivy projectile doom-themes evil-leader evil use-package))
  '(package-selected-packages
-   '(add-node-modules-path rjsx-mode pyvenv go-mode eglot sbt-mode scala-mode t: tide-mode tide projectile-ripgrep tuareg elm-mode lsp-haskell lsp-ui lsp-mode haskell-mode rust-mode forth-mode python-black docker dockerfile auto-package-update dockerfile-mode graphviz-dot-mode eval-sexp-fu graph-viz-dot-mode slime aggressive-indent slime-company evil-surround prettier-js prettier-js-mode typescript-mode javascript-mode typescript javascript ts-mode js-mode vue-mode vmd-mode multimarkdown markdown-mode counsel counsel-mode terraform-mode evil-magit magit flycheck exec-path-from-shell evil-commentary company-quickhelp company rainbow-delimiters which-key swiper ivy projectile doom-themes evil-leader evil use-package))
+   '(eglot add-node-modules-path rjsx-mode pyvenv go-mode sbt-mode scala-mode t: tide-mode tide projectile-ripgrep tuareg elm-mode lsp-haskell lsp-ui lsp-mode haskell-mode rust-mode forth-mode python-black docker dockerfile auto-package-update dockerfile-mode graphviz-dot-mode eval-sexp-fu graph-viz-dot-mode slime aggressive-indent slime-company evil-surround prettier-js prettier-js-mode typescript-mode javascript-mode typescript javascript ts-mode js-mode vue-mode vmd-mode multimarkdown markdown-mode counsel counsel-mode terraform-mode evil-magit magit flycheck exec-path-from-shell evil-commentary company-quickhelp company rainbow-delimiters which-key swiper ivy projectile doom-themes evil-leader evil use-package))
  '(projectile-mode t nil (projectile))
  '(safe-local-variable-values
    '((haskell-process-use-ghci . t)

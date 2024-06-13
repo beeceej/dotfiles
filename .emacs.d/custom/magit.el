@@ -17,9 +17,5 @@
       (insert (concat "feat(" project-name "-" ticket-num "):"))))
   (add-hook 'git-commit-setup-hook 'jira-setup-commit))
 
-(use-package evil-magit
-  :after (magit)
-  :ensure t)
-
 (provide 'magit)
 ;;; magit.el ends here

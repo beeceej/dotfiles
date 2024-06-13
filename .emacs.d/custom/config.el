@@ -28,7 +28,7 @@
   (condition-case nil
 	  (set-frame-font "jetbrains mono 10")
 	(error nil))
-  (global-linum-mode)
+  (display-line-numbers-mode)
   (blink-cursor-mode 0)
   (global-hl-line-mode)
   (menu-bar-mode -1)
@@ -43,10 +43,8 @@
     :ensure t
     :config
     (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
-  (use-package autopair
-    :ensure t
-    :config
-    (autopair-global-mode))
+  (electric-pair-mode 1)
+
 
   (custom-config--base)
   (custom-config--evil)
